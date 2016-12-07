@@ -13,7 +13,7 @@ avatar: http://odxw2thk6.bkt.clouddn.com/002122.png
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://gaoac.github.io
 root: /blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
