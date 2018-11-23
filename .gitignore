@@ -1,2 +1,8 @@
-﻿#忽略idea文件
-*.idea
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.history

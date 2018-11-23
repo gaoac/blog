@@ -1,6 +1,5 @@
 ---
 title: about
-date: 2016-11-11 15:35:50
-type: "about"
+date: 2018-11-23 16:51:11
 comments: false
 ---

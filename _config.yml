@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: gaoac's notes
-subtitle: do a water drop
-description: 爱的不够，才借口多多！
+title: Deku
+subtitle: Personal notes
+description: 爱的不够，才借口多少！
+keywords:
 author: gaoac
-language: zh-Hans
+language: zh-CN
 timezone:
-avatar: http://odxw2thk6.bkt.clouddn.com/002122.png
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://gaoac.github.io
-root: /blog
+url: http://yoursite.com
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -29,7 +29,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :year-:month-:day-:title.md # File name of new posts
+new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -38,12 +38,23 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
+# 代码高亮设置
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true # 代码自动高亮
   tab_replace:
-
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+  
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -66,19 +77,18 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+plugins:
+  - hexo-footnotes
+  
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/gaoac/blog.git
+  repository: git@github.com:gaoac/blog.git
   branch: gh-pages
-#多说评论
-duoshuo_shortname: gaoac
-#多说分享
-duoshuo_share: true
-#多说热评文章
-duoshuo_hotartical: true
-#百度统计
-#baidu_analytics: 943f8d6c09c2de7f6c86ef1ce1b8b377
-# Swiftype Search Key
-#swiftype_key: LsTpHU_F9dvf6iESgfcu
