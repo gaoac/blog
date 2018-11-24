@@ -78,7 +78,7 @@ pagination_dir: page
 theme: next
 
 plugins:
-  - hexo-footnotes
+  hexo-footnotes
   
 symbols_count_time:
   symbols: true
