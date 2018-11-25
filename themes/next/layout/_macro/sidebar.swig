@@ -30,7 +30,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             {% if theme.avatar.url %}
-            <a href="/">
+            <a href="/blog/">
               <img class="site-author-image" itemprop="image"
                 src="{{ url_for( theme.avatar.url | default(theme.images + '/avatar.gif') ) }}"
                 alt="{{ author }}" />
