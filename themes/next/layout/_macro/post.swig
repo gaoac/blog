@@ -315,6 +315,12 @@
           <!--/noindex-->
         {% elif post.excerpt  %}
           {{ post.excerpt }}
+
+        {% if post.image %}
+          <div class="out-img-topic">
+           <img src={{ post.image }} class="img-topic" />
+          </div>
+        {% endif %}
           <!--noindex-->
           {% if theme.read_more_btn %}
             <div class="post-button text-center">
@@ -379,7 +385,7 @@
       {% if post.tags and post.tags.length and not is_index %}
         <div class="post-tags">
           {% for tag in post.tags %}
-            <a href="{{ url_for(tag.path) }}" rel="tag"># {{ tag.name }}</a>
+            <a href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
           {% endfor %}
         </div>
       {% endif %}
