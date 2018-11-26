@@ -100,3 +100,5 @@ deploy:
   type: git
   repository: git@github.com:gaoac/blog.git
   branch: gh-pages
+  name: gaoac
+  email: gaoancun@qq.com
