@@ -12,6 +12,7 @@
   <div class="post-block category">
 
     <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
       <div class="collection-title">
         <{% if theme.seo %}h2{% else %}h1{% endif %}>{#
         #}{{ page.category }}{#
