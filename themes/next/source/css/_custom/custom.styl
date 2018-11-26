@@ -5,12 +5,15 @@
     background-image: linear-gradient(90deg, #F79533 0%, #F37055 15%, #EF4E7B 30%, #A166AB 44%, #5073B8 58%, #1098AD 72%, #07B39B 86%, #6DBA82 100%);
 }
 // // 页面顶部行高
-// .header {
-//     line-height: 1.5;
-// }
+.header {
+    line-height: 1.5;
+}
 // // 页面背景色
 .container {
     background-color: rgba(0, 0, 0, 0.75);
+}
+.main {
+  padding-bottom: 48px;
 }
 // 页面留白更改
 .header-inner {
@@ -152,6 +155,7 @@
 }
 // 页面底部页脚
 .footer {
+    bottom: -85px;
     line-height: 1.5;
     background-color: rgba(255, 255, 255, 0.75);
     color: #333;
@@ -317,7 +321,7 @@ img:hover {
 }
 // 侧栏站点描述
 .site-description {
-    letter-spacing: 5px;
+    // letter-spacing: 5px;
     font-size: 15px;
     font-weight: bold;
     margin-top: 15px;
@@ -337,8 +341,10 @@ img:hover {
 .feed-link {
     margin-top: 15px;
     margin-left: 7px;
+    border: 0;
 }
 .feed-link a {
+    display: inline-block;
     color: rgb(255, 255, 255);
     border: 1px solid rgb(158, 158, 158) !important;
     border-radius: 15px;
@@ -347,11 +353,12 @@ img:hover {
     background-color: rgb(161, 102, 171);
 }
 .feed-link a i {
-    color: rgb(255, 255, 255);
+    // color: rgb(255, 255, 255);
 }
 // 侧栏社交链接
 .links-of-author {
-    margin-top: 0px;
+    margin-top: 5px;
+    text-align: center;
 }
 // 侧栏友链标题
 .links-of-blogroll-title {
@@ -364,11 +371,11 @@ img:hover {
 }
 // 侧栏超链接样式（友链的样式）
 .sidebar a {
-    color: #ccc;
+    color: #555;
     border-bottom: none;
 }
 .sidebar a:hover {
-    color: rgb(255, 255, 255);
+    color: #847b7b;
 }
 // 自定义的侧栏时间样式
 #days {
@@ -376,6 +383,7 @@ img:hover {
     color: rgb(7, 179, 155);
     font-size: 13px;
     margin-top: 15px;
+    text-align: center;
 }
 // 侧栏目录链接样式
 .post-toc ol a {
@@ -407,6 +415,11 @@ img:hover {
 // 时间轴样式
 .posts-collapse {
     margin: 50px 0px;
+    .post {
+      margin: 10px 0;
+      padding: 0;
+      background-color: transparent;
+    }
 }
 @media (max-width: 1023px) {
     .posts-collapse {
@@ -635,67 +648,8 @@ a.fancybox{
 .btn:hover {
     color: #222 !important;
 }
-// 自定义的页脚微信订阅号样式
-.weixin-box {
-    position: absolute;
-    bottom: 43px;
-    left: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
-}
-.weixin-menu {
-    position: relative;
-    height: 24px;
-    width: 24px;
-    cursor: pointer;
-    // background: url(https://微信的logo.svg);
-    background-size: 24px 24px;
-}
-.weixin-hover {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    height: 0px;
-    width: 0px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
-    // background: url(https://二维码.svg);
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-size: 150px 150px;
-    transition: all 0.35s ease-in-out;
-    z-index: 1024;
-    opacity: 0;
-}
-.weixin-menu:hover .weixin-hover {
-    bottom: 24px;
-    left: 24px;
-    height: 170px;
-    width: 150px;
-    opacity: 1;
-}
-.weixin-description {
-    opacity: 0;
-    position: absolute;
-    bottom: 3%;
-    left: 5%;
-    right: 5%;
-    font-size: 12px;
-    transition: all 0.35s cubic-bezier(1, 0, 0, 1);
-}
-.weixin-menu:hover .weixin-description {
-    opacity: 1;
-}
+
 // 自定义页脚跳动的心样式
-@keyframes heartAnimate {
-    0%,100%{transform:scale(1);}
-    10%,30%{transform:scale(0.9);}
-    20%,40%,60%,80%{transform:scale(1.1);}
-    50%,70%{transform:scale(1.1);}
-}
-#heart {
-    animation: heartAnimate 1.33s ease-in-out infinite;
-}
 .with-love {
     color: rgb(255, 113, 168);
 }
