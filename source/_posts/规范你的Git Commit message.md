@@ -5,6 +5,14 @@ tags: [Git]
 categories: Git
 ---
 
+#### 写在前面
+
+关于Git，大家想必都很熟悉，因为我们几乎每天都在重复着`git add`、`git commit`、`git push`等命令，自然也就留下很多“痕迹”，如果没有好的规范和工具来约束，可能就会出现以下情况：
+![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/git_commit_error.png)
+
+
+因此，规范和工具的重要性就体现出来了：
+
 > 关于 Git Commit message 的写法规社区有多种，本文采用的的 Angular 规范是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
 #### 相关工具：
@@ -34,7 +42,7 @@ emoji-cz 官方例子内容：
 
 ```
 {
-  "path": "emoji-cz",  // 指定commitizen使用的adapter
+  "path": "emoji-cz",  // 指定commitizen使用的adapter（使用该适配器后，无法生成changelog,故若需要自动生成changelog，可以选择选择conventional-changelog）
   "emoji-cz": {
       // Overwrite types prompted to the command line.
       "types": {
@@ -86,3 +94,6 @@ emoji-cz 官方例子内容：
   🚀  Perf:                   A code change that improves performance
   ✅  Test:                   Adding tests.
 ```
+再看提交记录，是不是赏心悦目多了：
+
+![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/git_commit_normal.png)
