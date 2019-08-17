@@ -15,15 +15,15 @@ categories: Linux
 首次安装， root 账号密码默认为空（当然也可以在安装过程中设置），但本人经常忘记密码，所以难免有要重置密码的时候。
 1. 重启系统，开机过程中，出现下图画面时，通过快速按下`↑`和`↓`来暂停引导程序（对手速自信的同学请无视），如图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517912748698.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517912748698.png)
 2. 使用`↑`和`↓`选择第一行（背景高亮即为选中），按下键盘上的e，进入编辑模式;
 
 3. 将光标一直移动到 LANG=en_US.UTF-8 后面，空格，再追加init=/bin/sh。这里特别注意，需要写在UTF-8后，保持在同一行，并注意空格。由于屏幕太小，会自动添加\换行，这个是正常的。如图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517913276601.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517913276601.png)
 4. 按下`CTRL+X`进行引导启动，成功后进入该界面，如图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517913476481.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517913476481.png)
 5. 接下来逐步输入以下命令：
    1. 挂载根目录 
     `mount -o remount, rw /`
@@ -39,13 +39,13 @@ categories: Linux
 因为最小化安装以后，centos 默认未开启网卡，所以首先需要开启网卡：
 1. 执行命令`cd /etc/sysconfig/network-scripts`，看到下图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517914521832.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517914521832.png)
 2. 执行命令`vi ifcfg-ens33 `（vi/vim编辑器用法相信小伙伴都很熟悉了，这里不再涉及），将 `ONBOOT=no` 改为 `ONBOOT=yes `，如图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517915250037.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517915250037.png)
 3. 由于我是在虚拟机里安装的centos,同时作为服务供给其他局域网用户使用，所以选择桥接模式，将centosIP、网关、DNS等信息进行配置，如图：
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517916354021.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517916354021.png)
  >`BOOTPROTO=dhcp` -->`BOOTPROTO=static` IP获取方式改为静态获取</br>
  `ZONE=public`   firewalld  zone=piblic（公共）：在公共区域内使用，不能相信网络内其他计算机不会对你造成危害，只能接受经过选取的连接。</br>
  `PADDR=10.82.17.71`  IP地址</br>
@@ -56,11 +56,11 @@ categories: Linux
 
 然后执行`systemctl restart network`，重启网络服务
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517915336851.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517915336851.png)
 
  测试网络是否连通：` ping www.baidu.com`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517971505116.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517971505116.png)
 出现以下信息，说明可以正常访问互联网了（至于上图为什么画风变了，额，这个纯属个人喜好，小伙伴可以自己选择喜欢的终端工具以及主题配色)
 
 #### 第四步：关闭 SELinux
@@ -73,7 +73,7 @@ categories: Linux
 
 执行命令：`getenforce`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517989977313.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517989977313.png)
 
 如上图显示`Enforcing`，说明SELinux处于开启状态。
 
@@ -88,13 +88,13 @@ setenforce 0
   直接修改配置文件
   执行命令：`vi /etc/selinux/config`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517990948894.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517990948894.png)
 
 将`SELINUX=enforcing`改为`SELINUX=disabled `
 然后执行命令`reboot`重启系统生效
 再次查看，状态已变为`disabled `
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517991162515.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517991162515.png)
 
 
 #### 第五步：防火墙基础配置
@@ -140,7 +140,7 @@ setenforce 0
 禁止开机自启`systemctl disable firewalld`</br>
 查看防火墙状态`systemctl status firewalld`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518068337892.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518068337892.png)
 
 #### 第六步：添加常用yum源（软件包）
 linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其中CentOS 内置的yum命令安装非常的简单实用，能自动帮助我们解决依赖，在此推荐yum方式安装软件应用，但CentOS 最小化安装后，内置的yum源可用的软件偏少或者版本过低，通常我们需要使用一些第三方的yum源，这里向大家推荐两个比较常用和权威的yum源，EPEL和REMI。
@@ -154,18 +154,18 @@ linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其
 
 首先查看目前系统中已存在的yum源：`yum repolist`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517998950801.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517998950801.png)
 可以看到目前系统yum源有三个，接下来我们开始添加新的yum源。
 
 由于现在安装 REMI源的时候会自动安装EPEL作为依赖包。所以我们只需要直接安装REMI即可：`yum install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517999270175.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517999270175.png)
 
 然后确认，安装完毕
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517999341889.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517999341889.png)
 
 再次查看`yum repolist`
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1517999454043.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1517999454043.png)
 
 可以看到，我们已经多出了两个yum源（后续可继续增加其他源，这里就不再补充了）。
 
@@ -192,7 +192,7 @@ linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其
 >yum history：查看yum事务历史
 
 我们先执行命令：`yum makecache` 把服务器的包信息下载到本地电脑缓存起来,以提高搜索 、安装软件的速度，如图：
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518000705761.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518000705761.png)
 
 #### 第七步：软件应用安装与配置
 首先我们从常规的LMAP套装开始：
@@ -225,17 +225,17 @@ linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其
 首先查看系统是否安装过mariadb：
 `rpm -qa | grep mariadb`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518002173008.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518002173008.png)
 
 先卸载系统中的mariadb：
 `rpm -e --nodeps mariadb-libs-****.x86_64`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518003583701.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518003583701.png)
 
 查看可安装版本：
 `yum list mariadb*`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518004073357.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518004073357.png)
 
 **这里要说明一下:**
 >出于实用的目的，MariaDB是同一MySQL版本的二进制替代品(例如MySQL 5.1->MariaDB 5.1, MariaDB5.2和MariaDB 5.3是兼容的。MySQL 5.5将会和MariaDB 5.5保持兼容)。简单说5.x就是为了兼容MySQL5.x的，接口几乎一致，体验上几乎无差别。
@@ -245,11 +245,11 @@ linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其
 
 这里我们安装`mariadb `与`mariadb-server`即可。
 执行命令`yum install -y mariadb mariadb-server`
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518004392140.png)
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518004502275.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518004392140.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518004502275.png)
 
 程序会自动分析其需要的依赖并下载安装，我们静等完成就好。
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518004524407.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518004524407.png)
 到此，mariadb安装结束。
 ###### 启动配置
 启动mariadb
@@ -257,31 +257,31 @@ linux下软件安装方式有很多，比如RMP、YUM、源代码安装等。其
 查看运行状态
 `systemctl status mariadb`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518004813058.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518004813058.png)
 设置开启自启
 `systemctl enable mariadb`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518054872049.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518054872049.png)
 ###### 密码配置
 登陆数据库：
 `mysql -u root -p`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518054933348.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518054933348.png)
 首次安装后，root账号默认密码为空，下面我们为root账号设置密码
 执行命令：` mysql_secure_installation`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518060529264.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518060529264.png)
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518061621496.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518061621496.png)
 使用刚设置的密码登陆数据库：
 `mysql -u root -p`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518061780929.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518061780929.png)
 ###### 字符集与排序规则
 接下来，让我么你看下mariadb数据库字符集(Character set)和排序规则(Collation)：
 执行：`show variables like "%character%";show variables like "%collation%";`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518066545688.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518066545688.png)
 
 这里再普及下字符集的概念：
 >character_set_client: 代表客户端字符集，客户端最简单的来说，就是指命令行，或者其它操作数据库的网页，应用等等，客户端字符集就代表了用户输入的字符，用什么字符集来编码。</br> 
@@ -330,7 +330,7 @@ collation-server=utf8_general_ci
 skip-character-set-client-handshake
 ```
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518077165045.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518077165045.png)
 
 重启mariadb
 `systemctl restart mariadb`
@@ -338,7 +338,7 @@ skip-character-set-client-handshake
 `show variables like "%character%";show variables like "%collation%";`
 都已设置成utf8。
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1518075868100.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1518075868100.png)
 
 ###### 用户与权限
 创建用户：
@@ -362,25 +362,25 @@ skip-character-set-client-handshake
 查看可安装版本
 `yum list httpd`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519261606246.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519261606246.png)
 这里我们直接安装最新版2.4.6
 `yum install -y httpd`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519261693393.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519261693393.png)
 安装完毕，启动Apache
 `systemctl start httpd`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519261943199.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519261943199.png)
 Apache默认端口80，所以在浏览器访问`http://localhost`，出现以下界面，说明Apache启动成功
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519262020266.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519262020266.png)
 设置开机自启
 `systemctl enable httpd `
 ##### PHP
 查看可安装版本
 `yum list php`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519264617630.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519264617630.png)
 
 显示版本为5.4.16，想要使用php7的话，需要安装升级PHP7的rpm源
 `rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm`
@@ -388,17 +388,17 @@ Apache默认端口80，所以在浏览器访问`http://localhost`，出现以下
 查看php7安装包
 `yum list php`及`yum list php*w`,可以看到目前可以安装的各版本
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519265639829.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519265639829.png)
 
 这里我们不是以PHP为主，就选系统默认版本5.4.16
 `yum install php`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519265796957.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519265796957.png)
 
 安装完毕，查看php版本
 `php -v`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519265856347.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519265856347.png)
 重启Apache
 `systemctl restart httpd`
 apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内容:
@@ -409,13 +409,13 @@ apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内�
 ```
 访问`http://localhost/phpinfo.php`，查看php相关信息
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519266278349.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519266278349.png)
 
 ###### 安装PHP模块
 查看已安装模块
 `php -m`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519266378610.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519266378610.png)
 
 这里我们需要再安装常用的一些模块，推荐使用pecl安装php扩展
 >PECL 的全称是 The PHP Extension Community Library ，是一个开放的并通过 PEAR(PHP Extension and Application Repository，PHP 扩展和应用仓库)打包格式来打包安装的 PHP扩展库仓库。通过 PEAR 的 Package Manager 的安装管理方式，可以对 PECL 模块进行下载和安装。
@@ -434,7 +434,7 @@ apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内�
 
 查看新增php模块
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519270131023.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519270131023.png)
 
 ###### 安装phpMyAdmin 
 >phpMyAdmin 是一个以PHP为基础，以Web-Base方式架构在网站主机上的MySQL的数据库管理工具，让管理者可用Web接口管理MySQL数据库。借由此Web接口可以成为一个简易方式输入繁杂SQL语法的较佳途径，尤其要处理大量资料的汇入及汇出更为方便。其中一个更大的优势在于由于phpMyAdmin跟其他PHP程式一样在网页服务器上执行，但是您可以在任何地方使用这些程式产生的HTML页面，也就是于远端管理MySQL数据库，方便的建立、修改、删除数据库及资料表。也可借由phpMyAdmin建立常用的php语法，方便编写网页时所需要的sql语法正确性。
@@ -494,24 +494,24 @@ apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内�
 `systemctl restart httpd`
 访问`http://ip/phpmyadmin`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519280996686.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519280996686.png)
 
 ##### JDK:
 查看可安装JDK
 `yum search java|grep jdk`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519286456125.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519286456125.png)
 
 Linux发行版中用的多是OpenJDK（关于OpenJDK与Oracle JDK的区别这里不再赘述）。
 
 我们选择安装OpenJDK1.8即可：
 `yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519287864542.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519287864542.png)
 
 `java -version`
 
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519287894436.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519287894436.png)
 
 Linux 上使用 yum 命令后，会将 OpenSDK 安装到 /usr/lib/jvm/ 目录下。
 设置 JAVA-HOME，让系统上的所有用户使用 java(OpenSDK )
@@ -530,7 +530,7 @@ export JAVA_HOME JRE_HOME CLASS_PATH PATH
 
 验证环境变量是否生效:
 `echo $PATH`
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519290488857.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519290488857.png)
 
 ##### Tomcat:
 
@@ -594,9 +594,9 @@ WantedBy=multi-user.target
 >tomcat启动时会在tomcat的根目录/usr/local/tomcat下生成pid文件tomcat.pid，停止后会删除，用systemctl管理tomcat不会出现同时启动多个tomcat，这样可以保证始终只有一个tomcat在运行
 
 访问http://ip:8080/,出现以下界面说明启动成功
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519350528632.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519350528632.png)
 但当我们点击红色框中按钮，进入管理时，提示无访问权限；
- ![](https://raw.githubusercontent.com/gaoac/library/master/images/CentOS7/1519350569459.png)
+ ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519350569459.png)
 这时我们按提示，进入/usr/local/tomcat/conf，编辑 tomcat-users.xml，设置用户：
 在`<tomcat-users></tomcat-users>`内部添加：
 ```xml
