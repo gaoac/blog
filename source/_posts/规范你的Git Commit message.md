@@ -7,93 +7,63 @@ categories: Git
 
 #### 写在前面
 
-关于Git，大家想必都很熟悉，因为我们几乎每天都在重复着`git add`、`git commit`、`git push`等命令，自然也就留下很多“痕迹”，如果没有好的规范和工具来约束，可能就会出现以下情况：
+关于 Git，大家想必都很熟悉，因为我们几乎每天都在重复着`git add`、`git commit`、`git push`等命令，自然也就留下很多“痕迹”，如果没有好的规范和工具来约束，可能就会出现以下情况：
 ![](https://github.com/gaoac/images-library/blob/master/blog/git_commit_error.png?raw=true)
-
 
 因此，规范和工具的重要性就体现出来了：
 
 > 关于 Git Commit message 的写法规社区有多种，本文采用的的 Angular 规范是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
-#### 相关工具：
+#### 相关工具
 
 - [commitizen](https://github.com/commitizen/cz-cli)
 - [gitmoji](https://github.com/carloscuesta/gitmoji/)
-- [emoji-cz](https://github.com/kevin940726/emoji-cz)
+- [cz-conventional-emoji](https://github.com/gaoac/cz-conventional-emoji) - 关于适配器，可以根据团队选择不同适配器，此处就安利该适配器了。
 
 #### 安装
 
+##### 全局
+
 ```
-npm install -g commitizen
+yarn global add cz-conventional-emoji
 # OR
-# yarn global add commitizen
+# npm install --global cz-conventional-emoji
 
-npm install -g emoji-cz
+# 设置全局默认适配器
+echo '{ "path": "cz-conventional-emoji" }' > ~/.czrc
+```
+
+##### 本地
+
+```
+yarn add cz-conventional-emoji
 # OR
-# yarn global add emoji-cz
+# npm install --save-dev cz-conventional-emoji
 
-# set as default adapter globally(全局配置，详细配置见下文)
-echo '{ "path": "emoji-cz" }' > ~/.czrc
+# 为你的项目设置默认适配器
+"config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-emoji"
+    },
+  }
 ```
-
-#### 配置
-
-emoji-cz 官方例子内容：
-
-```
-{
-  "path": "emoji-cz",  // 指定commitizen使用的adapter（使用该适配器后，无法生成changelog,故若需要自动生成changelog，可以选择选择conventional-changelog）
-  "emoji-cz": {
-      // Overwrite types prompted to the command line.
-      "types": {
-        "Fix": {
-          "emoji": "🐝", // overwrite "Fix" emoji to a bee
-          "name": "Bug", // overwrite "Fix" name to "Bug"
-          "description": "Dirty bug" // overwrite description of "Fix"
-        },
-        // add a new type "Chore"
-        "Chore": {
-          "emoji": "❓",
-          "description": "Other changes that don't modify src or test files"
-        }
-      },
-
-      // Overwrite the output commit subject in the specified format.
-      // Below is the default format,
-      // [emoji] will be replace with the chose type's emoji,
-      // [name] will be replace with the chose type's name,
-      // [subject] will be replace with the subject you entered.
-      // One example output of the format can be: `✨ Feat: initial commit`
-      "format": "[emoji] [name]: [subject]"
-    }
-}
-
-```
-
-(可参考[emoji-cz-tool](https://github.com/gaoac/emoji-cz-tool)仓库中`.cz.json`文件已按照 gitmoji 补全，可直接使用)
-
-##### 全局配置
-
-编辑 ~/.czrc 文件（内容如`.cz.json`文件）
-
-##### 项目配置
-
-在项目根目录创建`.cz.json`文件
 
 #### 使用
 
 以后，凡是用到 git commit 命令，一律改为使用 git cz。这时，就会出现选项，用来生成符合格式的 Commit message（commitizen 与 emoji 结合）。如图：
 
 ```
-? Select the type of change that you're committing: (Use arrow keys)
-❯ ✨  Feat:                   A new feature
-  🐛  Fix:                    A bug fix
-  📝  Docs:                   Documentation only changes
-  🎨  Style:                  Changes that do not affect the meaning of the code
-  🔨  Refactor:               A code change that neither fixes a bug nor adds a feature
-  🚀  Perf:                   A code change that improves performance
-  ✅  Test:                   Adding tests.
+Select the type of change that you're committing: (Use arrow keys)
+❯ ✨  Feat:              Introducing new features.
+  🐛  Bug:               Fixing a bug.
+  📝  Docs:              Writing docs.
+  🎨  Style:             Improving structure / format of the code.
+  💄  UI:                Updating the UI and style files.
+  🚑  Quickfix:          Critical hotfix.
+  ⚡️  Pref:               Improving performance.
+(Move up and down to reveal more choices)
 ```
+
 再看提交记录，是不是赏心悦目多了：
 
 ![](https://github.com/gaoac/images-library/blob/master/blog/git_commit_normal.png?raw=true)
