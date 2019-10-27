@@ -844,7 +844,7 @@ db.auth('用户a', '密码')
 
 开启远程登录：
 
-在配置文件（默认是/etc/mongod.conf）中，将127.0.0.1改为0.0.0.0
+在配置文件（默认是/etc/mongod.conf）中，将 bindIp 值由 127.0.0.1 改为 0.0.0.0
 
 ```properties
 # network interfaces
