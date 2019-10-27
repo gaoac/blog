@@ -440,12 +440,12 @@ apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内�
 >phpMyAdmin 是一个以PHP为基础，以Web-Base方式架构在网站主机上的MySQL的数据库管理工具，让管理者可用Web接口管理MySQL数据库。借由此Web接口可以成为一个简易方式输入繁杂SQL语法的较佳途径，尤其要处理大量资料的汇入及汇出更为方便。其中一个更大的优势在于由于phpMyAdmin跟其他PHP程式一样在网页服务器上执行，但是您可以在任何地方使用这些程式产生的HTML页面，也就是于远端管理MySQL数据库，方便的建立、修改、删除数据库及资料表。也可借由phpMyAdmin建立常用的php语法，方便编写网页时所需要的sql语法正确性。
 
 安装：
- `yum install -y phpmyadmin `
+ `yum install -y phpmyadmin`
 
 > phpMyAdmin 的默认安装目录是 /usr/share/phpMyAdmin，同时会在 Apache 的配置文件目录中自动创建虚拟主机配置文件 /etc/httpd/conf.d/phpMyAdmin.conf（区分大小写）。默认情况下，CentOS 7上的phpMyAdmin只允许从回环地址(127.0.0.1)访问。为了能远程连接，你需要改动它的配置。
 
 修改配置：
-`vi /etc/httpd/conf.d/phpMyAdmin.conf `
+`vi /etc/httpd/conf.d/phpMyAdmin.conf`
 ```properties
 <Directory /usr/share/phpMyAdmin/>
    AddDefaultCharset UTF-8
@@ -495,6 +495,17 @@ apache 默认根目录`/var/www/html`,添加文件phpinfo.php，输入以下内�
 访问`http://ip/phpmyadmin`
 
  ![](https://raw.githubusercontent.com/gaoac/images-library/master/blog/CentOS7/1519280996686.png)
+
+开启连接远程服务器中数据库功能：
+
+执行命令 `vi /usr/share/phpmyadmin/libraries/config.default.php`,
+
+将`$cfg['AllowArbitraryServer']`值修改为`true`;
+```
+$cfg['AllowArbitraryServer'] = true;
+```
+然后重启Apache服务器：
+`systemctl restart httpd`
 
 ##### JDK:
 查看可安装JDK
@@ -753,7 +764,7 @@ yum install -y mongodb-org-3.6.3
 
 > MongoDB默认是不开启权限认证的，但自从上次MongoDB爆发了[赎金门事件](http://coolshell.cn/articles/17607.html)，还是很有开启MongoDB的权限认证的必要。
 
-开启认证也很简单，在配置文件（默认是/etc/mongodb.conf）里面进行配置即可：
+开启认证也很简单，在配置文件（默认是/etc/mongod.conf）里面进行配置即可：
 
 ```properties
 security:
@@ -833,13 +844,13 @@ db.auth('用户a', '密码')
 
 开启远程登录：
 
-在配置文件（默认是/etc/mongodb.conf）中，注释掉bindIp，或者将127.0.0.1改为0.0.0.0
+在配置文件（默认是/etc/mongod.conf）中，将127.0.0.1改为0.0.0.0
 
 ```properties
 # network interfaces
 net:
   port: 27017
-  #bindIp: 127.0.0.1  # Listen to local interface only, comment to listen on all interfaces.
+  bindIp: 0.0.0.0  # Listen to local interface only, comment to listen on all interfaces.
 ```
 
 最后是MongoDB图形化管理工具：
