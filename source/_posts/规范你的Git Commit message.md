@@ -2,17 +2,19 @@
 title: 规范你的Git Commit message
 date: 2018-09-08 20:45:11
 tags: [Git]
-categories: Git
+categories: [Git]
+description: ""
 ---
 
 #### 写在前面
 
 关于 Git，大家想必都很熟悉，因为我们几乎每天都在重复着`git add`、`git commit`、`git push`等命令，自然也就留下很多“痕迹”，如果没有好的规范和工具来约束，可能就会出现以下情况：
+
 ![](https://github.com/gaoac/images-library/blob/master/blog/git_commit_error.png?raw=true)
 
 因此，规范和工具的重要性就体现出来了：
 
-> 关于 Git Commit message 的写法规社区有多种，本文采用的的 Angular 规范是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
+> 关于 Git Commit message 的写法规社区有多种，本文采用的的 Angular 规范是目前使用最广的写法，比较合理和系统化，并且有配套的工具。<!-- more -->
 
 #### 相关工具
 
