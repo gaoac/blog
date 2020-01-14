@@ -2,7 +2,7 @@
 title: 规范你的Git Commit message
 date: 2018-09-08 20:45:11
 tags: [Git]
-categories: [Git]
+categories: [Tool,Git]
 description: ""
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: ECMAScript 定义类或对象的几种常见方式
 date: 2016-05-17 19:17:12
-tags: [ECMAScript,JavaScript]
-categories: [ECMAScript]
+tags: [JavaScript]
+categories: [JavaScript]
 description: ""
 ---
 

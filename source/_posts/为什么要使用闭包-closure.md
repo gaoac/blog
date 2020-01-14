@@ -1,8 +1,8 @@
 ---
 title: 为什么要使用闭包(closure)?
 date: 2017-01-01 15:39:11
-tags: [ECMAScript,JavaScript]
-categories: [ECMAScript,JavaScript]
+tags: [JavaScript]
+categories: [JavaScript]
 description: ""
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: onDrag & onDrop 使用dataTransfer传输数据时IE/chrome兼容问题
 date: 2019-06-21 17:54:49
-tags: [ECMAScript,JavaScript,HTML]
-categories: [HTML]
+tags: [JavaScript,HTML]
+categories: [WEB,HTML]
 description: ""
 ---
 

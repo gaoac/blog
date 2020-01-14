@@ -2,7 +2,7 @@
 title: 可能是目前最详细简明的CentOS7安装与管理教程
 date: 2018-02-22 22:22:46
 tags: [Linux,CentOS]
-categories: [Linux]
+categories: [Linux,CentOS]
 ---
 
 #### 说在前面
