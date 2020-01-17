@@ -16,20 +16,26 @@ description: ""
 
 > 关于 Git Commit message 的写法规社区有多种，本文采用的的 Angular 规范是目前使用最广的写法，比较合理和系统化，并且有配套的工具。<!-- more -->
 
+#### 推荐文章
+
+- [git commit 规范指南](https://segmentfault.com/a/1190000009048911) - 为什么需要 git commit 规范
+
 #### 相关工具
 
 - [commitizen](https://github.com/commitizen/cz-cli)
 - [gitmoji](https://github.com/carloscuesta/gitmoji/)
-- [cz-conventional-emoji](https://github.com/gaoac/cz-conventional-emoji) - 关于适配器，可以根据团队选择不同适配器，此处就安利该适配器了。
+- [cz-conventional-emoji](https://github.com/gaoac/cz-conventional-emoji) - 关于适配器，可以根据团队选择不同适配器，此处就安利该适配器了。（ 如果想根据 commit 信息生成 log，推荐 [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) ）
 
 #### 安装
+
+> 由于 commitizen 是基于 [nodejs](https://nodejs.org/) 的工具，所以首先需要安装 node 环境，具体不再赘述。
 
 ##### 全局
 
 ```
-yarn global add cz-conventional-emoji
+yarn global add commitizen cz-conventional-emoji
 # OR
-# npm install --global cz-conventional-emoji
+# npm install --global commitizen cz-conventional-emoji
 
 # 设置全局默认适配器
 echo '{ "path": "cz-conventional-emoji" }' > ~/.czrc
@@ -38,9 +44,9 @@ echo '{ "path": "cz-conventional-emoji" }' > ~/.czrc
 ##### 本地
 
 ```
-yarn add cz-conventional-emoji
+yarn add commitizen cz-conventional-emoji
 # OR
-# npm install --save-dev cz-conventional-emoji
+# npm install --save-dev commitizen cz-conventional-emoji
 
 # 为你的项目设置默认适配器
 "config": {
