@@ -4,6 +4,8 @@
 
 一个基于 Hexo 构建的静态博客。
 
+（本项目不再以个人的博客 https://gaoaccode.netlify.com 的形式维护，平时学习总结的文章将会以 issues 的方式记录）
+
 ## 作者
 
 gaoancun <gaoac.snow@outlook.com>
