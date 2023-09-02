@@ -1,0 +1,142 @@
+# Allow to cache content generation.
+cache:
+  enable: true
+# Remove unnecessary files after hexo generate.
+minify: true
+scheme: Pisces
+darkmode: true
+open_graph:
+  enable: true
+  # Add pairs each line to customize
+  options:
+    type: blog
+menu:
+  home: / || fa fa-home
+  about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  #schedule: /schedule/ || fa fa-calendar
+  #sitemap: /sitemap.xml || fa fa-sitemap
+  #commonweal: /404/ || fa fa-heartbeat
+menu_settings:
+  icons: true
+  badges: true
+
+footer:
+  icon:
+    name: fa fa-user
+    animated: false
+    color: "#808080"
+tag_icon: true
+related_posts:
+  enable: true
+  icon: fa fa-signs-post
+post_edit:
+  enable: true
+  url: https://github.com/gaoac/blog/edit/master/source/ # Link for view source
+
+# Preconnect CDN for fonts and plugins.
+# For more information: https://www.w3.org/TR/resource-hints/#preconnect
+preconnect: true
+
+codeblock:
+  # Code Highlight theme
+  # All available themes: https://theme-next.js.org/highlight/
+  theme:
+    light: base16/tomorrow-night
+    dark: base16/tomorrow-night
+  # prism:
+  #   light: prism
+  #   dark: prism-dark
+  copy_button:
+    enable: true
+
+back2top:
+  enable: true
+  # Back to top in sidebar.
+  sidebar: false
+  # Scroll percent label in b2t button.
+  scrollpercent: true
+
+reading_progress:
+  enable: true
+  # Available values: left | right
+  start_at: left
+  # Available values: top | bottom
+  position: top
+  reversed: false
+  color: "#37c6c0"
+  height: 2px
+
+bookmark:
+  enable: true
+  # Customize the color of the bookmark.
+  color: "#222"
+  # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
+  # If manual, only save it by clicking the bookmark-icon.
+  save: auto
+
+# Mermaid tag
+mermaid:
+  enable: true
+  # Available themes: default | dark | forest | neutral
+  theme:
+    light: default
+    dark: dark
+
+# WaveDrom tag
+wavedrom:
+  enable: false
+
+note:
+  # Note tag style values:
+  #  - simple    bs-callout old alert style. Default.
+  #  - modern    bs-callout new (v2-v3) alert style.
+  #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
+  #  - disabled  disable all CSS styles import of note tag.
+  style: simple
+  icons: false
+  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+  # Offset also applied to label tag variables. This option can work with disabled note tag.
+  light_bg_offset: 0
+
+# Vanilla JavaScript plugin for lazyloading images.
+lazyload: true
+
+social:
+  GitHub: https://github.com/gaoac || fa-brands fa-github
+  E-Mail: mailto:gaoac.snow@outlook.com || fa fa-envelope
+  #Weibo: https://weibo.com/yourname || weibo
+  #Google: https://plus.google.com/yourname || google
+  #Twitter: https://twitter.com/yourname || twitter
+  #FB Page: https://www.facebook.com/yourname || facebook
+  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+  #YouTube: https://youtube.com/yourname || youtube
+  #Instagram: https://instagram.com/yourname || instagram
+  #Skype: skype:yourname?call|chat || skype
+  #RSS: /atom.xml || rss
+
+# Local search
+# Dependencies: https://github.com/next-theme/hexo-generator-searchdb
+local_search:
+  enable: true
+  # If auto, trigger search by changing input.
+  # If manual, trigger search by pressing enter key or search button.
+  trigger: auto
+  # Show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+  # Unescape html strings to the readable one.
+  unescape: false
+  # Preload the search data when the page loads.
+  preload: false
+
+
+# Sidebar Avatar
+avatar:
+  # Replace the default image and set the url here.
+  url: /images/avatar.jpg
+  # If true, the avatar will be dispalyed in circle.
+  rounded: true
+  # If true, the avatar will be rotated with the cursor.
+  rotated: false
